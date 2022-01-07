@@ -1,31 +1,34 @@
-import { checkAuth, createItem, deleteList, getItems, logout } from '../fetch-utils.js';
+import { buyItem, checkAuth, createItem, deleteList, getItems, logout } from '../fetch-utils.js';
 import { renderItem } from './render-utils.js';
 
 const itemForm = document.querySelector('#item-form');
-const addButton = document.querySelector('#add-button');
-const deleteItemButton = document.querySelector('#delete-item');
 const deleteListButton = document.querySelector('#delete-list');
 const itemListEl = document.querySelector('.list-items');
 const logoutButton = document.getElementById('logout');
 
-// checkAuth();
+checkAuth();
 
+
+window.addEventListener('load', async() =>{
+    displayShoppingList();
+});
 
 itemForm.addEventListener('submit', async(e) =>{
     e.preventDefault();
-
+  
     const data = new FormData(itemForm);
     const amount = data.get('amount');
     const item = data.get('item');
-  
+    itemForm.reset();
     await createItem(amount, item);
     await displayShoppingList();
 
-    itemForm.reset();
+    
 });
 
 deleteListButton.addEventListener('click', async() => {
     await deleteList();
+    await displayShoppingList();
 });
 
 logoutButton.addEventListener('click', () => {
@@ -43,15 +46,10 @@ async function displayShoppingList(){
         itemListEl.append(shoppingListEl);
 
 
-
-        displayShoppingList();
-
-
-
-
-
+        shoppingListEl.addEventListener('click', async() =>{
+            await buyItem(item.id);
+            await displayShoppingList();
+        });
 
     }
-
-
 }

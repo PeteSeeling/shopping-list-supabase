@@ -152,3 +152,16 @@ footer {
     box-shadow: var(--shadow);
    
 }
+.bought{
+    background-color: rgb(83, 173, 173);
+    text-decoration: line-through;
+
+}
+p{
+    border:solid 2px;
+    border-color: rgb(83, 173, 173);
+    
+}
+.unbought{
+    cursor: pointer;
+}

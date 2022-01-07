@@ -21,6 +21,7 @@ export async function getItems(){
     const response = await client
         .from('list')
         .select();
+      
 
     return checkError(response);
     
