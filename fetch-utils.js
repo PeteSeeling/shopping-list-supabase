@@ -3,6 +3,26 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+
+export async function createItem(amount, item){
+    const response = await client
+        .from('list')
+        .insert([{
+            item:item,
+            amount:amount,
+        }]);
+       
+ 
+
+    return checkError(response);
+}
+export async function getItems(){
+    
+}
+
+
+
+
 export async function getUser() {
     return client.auth.session();
 }
