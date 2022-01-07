@@ -15,13 +15,22 @@
 
 <body>
     <header>
-        <div class="gutter-right logo">
-            <img src="../assets/big-logo.png" />
-        </div>
     </header>    
     <button id="logout">Logout</button>
     <main>
-        <h1>You are logged in!</h1>
+        <h1>Shopping List</h1>
+        <section class="new-item">
+            <form id="item-form">
+                <input name="amount">
+                <input name="item">
+                <button id="add-button">Add Item</button>
+                <button id="delete-item">Delete Item</button>
+    </form>
+    <div class="delete-button">
+        <button id="delete-button">Delete List</button>
+    </div>
+    </section>
+    <div class="list-items"></div>
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
