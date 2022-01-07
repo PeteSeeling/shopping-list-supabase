@@ -6,6 +6,7 @@ const deleteItemButton = document.querySelector('#delete-item');
 const deleteListButton = document.querySelector('#delete-list');
 const itemListEl = document.querySelector('.list-items');
 const logoutButton = document.getElementById('logout');
+
 checkAuth();
 
 

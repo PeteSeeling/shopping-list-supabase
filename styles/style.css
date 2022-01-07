@@ -46,8 +46,8 @@ section {
 }
 
 header {
-    display: flex;
-    justify-content: flex-end;
+    display: row;
+    text-align: center;
     background-color: var(--color3);
     height: var(--header-height);
     box-shadow: var(--shadow);
@@ -128,4 +128,27 @@ footer {
 
 .auth-container button {
     margin: 10px;
+}
+.new-item{
+    background-color: var(--color3);
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+}
+
+#item-form{
+    display:flex;
+    flex-direction: row;
+    background-color: var(--color3);
+   
+    box-shadow: var(--shadow);
+    
+
+}
+.button{
+    width:100px;
+    margin:5px;
+
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+   
 }
