@@ -1,4 +1,4 @@
-import { checkAuth, createItem, logout } from '../fetch-utils.js';
+import { checkAuth, createItem, deleteList, logout } from '../fetch-utils.js';
 
 const itemForm = document.querySelector('#item-form');
 const addButton = document.querySelector('#add-button');
@@ -16,12 +16,15 @@ itemForm.addEventListener('submit', async(e) =>{
     const data = new FormData(itemForm);
     const amount = data.get('amount');
     const item = data.get('item');
-    console.log(item, amount);
+  
     await createItem(amount, item);
 
-
+    itemForm.reset();
 });
 
+deleteListButton.addEventListener('click', async() => {
+    await deleteList();
+});
 
 logoutButton.addEventListener('click', () => {
     logout();

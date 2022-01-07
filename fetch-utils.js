@@ -10,17 +10,31 @@ export async function createItem(amount, item){
         .insert([{
             item:item,
             amount:amount,
-        }]);
+        }])
+        
+        .single();
        
- 
-
     return checkError(response);
 }
-export async function getItems(){
+
+export async function getItems(id){
+    const response = await client
+        .from('list')
+        .select()
+        .match({ id: id });
+console.log(id)
+    return checkError(response);
     
 }
 
+export async function deleteList(){
+    const response = await client
+        .from('list')
+        .delete('item');
+        
+    return checkError(response);
 
+}
 
 
 export async function getUser() {
@@ -36,7 +50,7 @@ export async function checkAuth() {
 
 export async function redirectIfLoggedIn() {
     if (await getUser()) {
-        location.replace('./other-page');
+        location.replace('./shopping-list');
     }
 }
 
