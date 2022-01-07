@@ -10,21 +10,28 @@ export async function createItem(amount, item){
         .insert([{
             item:item,
             amount:amount,
+            bought:false,
         }])
-        
         .single();
        
     return checkError(response);
 }
 
-export async function getItems(id){
+export async function getItems(){
     const response = await client
         .from('list')
-        .select()
-        .match({ id: id });
-console.log(id)
+        .select();
+
     return checkError(response);
     
+}
+export async function buyItem(id){
+    const response = await client
+        .from('list')
+        .update({ bought: true })
+        .match({ id: id });
+
+    return checkError(response);
 }
 
 export async function deleteList(){

@@ -1,4 +1,5 @@
-import { checkAuth, createItem, deleteList, logout } from '../fetch-utils.js';
+import { checkAuth, createItem, deleteList, getItems, logout } from '../fetch-utils.js';
+import { renderItem } from './render-utils.js';
 
 const itemForm = document.querySelector('#item-form');
 const addButton = document.querySelector('#add-button');
@@ -18,6 +19,7 @@ itemForm.addEventListener('submit', async(e) =>{
     const item = data.get('item');
   
     await createItem(amount, item);
+    await displayShoppingList();
 
     itemForm.reset();
 });
@@ -30,3 +32,26 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
+async function displayShoppingList(){
+    const items = await getItems();
+
+    itemListEl.textContent = '';
+
+    for (let item of items){
+        const shoppingListEl = renderItem(item);
+
+        itemListEl.append(shoppingListEl);
+
+
+
+        displayShoppingList();
+
+
+
+
+
+
+    }
+
+
+}

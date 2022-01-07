@@ -15,6 +15,8 @@ const signUpPassword = document.getElementById('sign-up-password');
 // if user currently logged in, redirect
 redirectIfLoggedIn();
 
+
+
 signUpForm.addEventListener('submit', async(event)=>{
     event.preventDefault();
     const user = await signupUser(signUpEmail.value, signUpPassword.value);
@@ -36,3 +38,4 @@ signInForm.addEventListener('submit', async(event)=>{
         console.error(user);
     }
 });
+
